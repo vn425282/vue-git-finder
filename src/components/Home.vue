@@ -3,43 +3,41 @@
     <div>
       <form autocomplete="off" @submit="handleSubmit">
         <label for="inp" class="inp">
-          <input type="text" id="inp" v-model="message" placeholder="Please enter GIT's username" maxlength="32" required/>
+          <input type="text" id="inp" v-model="message" placeholder="Please enter GIT's username" maxlength="32" required />
         </label>
       </form>
+      <div class="row">
+        <User :queryString.sync="message" ref="refUser" />
+        <Repositories :queryString.sync="message" ref="refRepo" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { GET_USER_INFO } from '../common/query/user'
+import User from './User';
+import Repositories from './Repositories';
 
 export default {
   name: 'Home',
-  props: {
-    msg: String
+  components: {
+    User,
+    Repositories
   },
+  props: {},
   data: function () {
     return {
-      message: ''
-    }
+      message: '',
+      confirm: false
+    };
   },
   methods: {
     handleSubmit: function (e) {
       e.preventDefault();
-      console.log(this.message);
-    }
-  },
-  apollo: {
-    search: {
-      query: GET_USER_INFO,
-      variables () {
-        return {
-          queryString: 'language:react stars:>10000'
-        }
-      }
+      this.confirm = true;
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -48,7 +46,7 @@ export default {
   position: relative;
   margin: auto;
   width: 100%;
-  max-width: 280px;
+  padding: 25px 70px;
 }
 
 .label {
@@ -61,35 +59,35 @@ export default {
   transform-origin: 0 0;
   transition: all 0.2s ease;
 }
-.border{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    transform: scaleX(0);
-    transform-origin: 0 0;
-    transition: all .15s ease;
+.border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
 }
 
-input{
-    -webkit-appearance: none;
-    width: 100%;
-    border: 0;
-    font-family: inherit;
-    padding: 12px 0;
-    height: 48px;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: 2px solid #C8CCD4;
-    background: none;
-    border-radius: 0;
-    color: #223254;
-    transition: all .15s ease;
+input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
 }
 
-input::focus{
-  background: rgba(#223254,.03);
-   outline: none;
+input::focus {
+  background: rgba(#223254, 0.03);
+  outline: none;
 }
 </style>

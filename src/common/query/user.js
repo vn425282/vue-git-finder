@@ -1,12 +1,13 @@
-import gql from 'graphql-tag'
-export const GET_USER_INFO = gql`
-        query {
-          user(login:"vn425282") {
-            name
-            avatarUrl
-            login
-            location
-            createdAt
-        }
-      }
-    `;
+import gql from 'graphql-tag';
+
+export const QUERY_USER_INFO = gql`
+query searchUserInfo($username: String!) {
+  user(login: $username) {
+    name
+    avatarUrl
+    login
+    location
+    createdAt
+  }
+}
+`

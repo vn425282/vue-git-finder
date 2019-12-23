@@ -26,8 +26,6 @@ export default {
   font-size: 9px;
   font-weight: 600;
   -ms-grid-row: 3;
-  position: fixed;
   bottom: 0;
-  width: 100%;
 }
 </style>

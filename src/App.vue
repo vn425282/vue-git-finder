@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Header />
     <router-view />
     <Footer />
@@ -155,6 +155,7 @@ html {
 }
 
 body {
+  display: flex;
   height: 100%;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
