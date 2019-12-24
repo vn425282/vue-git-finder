@@ -5,7 +5,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 
 Vue.use(VueApollo)
 
-const GIT_PUBLIC_TOKEN = '5bed43dd7d5db2aa054e7add3ff746af4300747b'
+const GIT_PUBLIC_TOKEN = ''
 const httpEndpoint = ' https://api.github.com/graphql'
 
 // Config
